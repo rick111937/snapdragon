@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Model artifacts (large binary, not source-controlled)
+models/**/*.onnx
+models/**/*.bin
+models/**/*.pt
+models/**/*.gguf
+
+# Local data (transient / user data, never committed)
+data/baselines/*
+data/documents/*
+data/embeddings/*
+data/inspection_history/*
+data/benchmarks/*
+!data/**/.gitkeep
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# Local config overrides / secrets – API keys must never be hard-coded (SRS S13)
+configs/local.*
+.env

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mirage-x"
+version = "0.0.1-scaffold"
+description = "Multimodal Industrial Reality & Anomaly Guidance Engine"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pillow>=10.0",
+    "pyyaml>=6.0",
+    "opencv-python>=4.8",
+    "onnxruntime>=1.17",
+    "pypdf>=4.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+mirage-x = "mirage_x.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

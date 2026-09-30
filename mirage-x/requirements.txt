@@ -1,0 +1,39 @@
+# MIRAGE-X dependency list — updated for MVP-1 (NPU Vision Pipeline).
+# Pin exact versions once model/runtime validation on the target
+# Snapdragon HP device is complete (see SRS §10 / Layer B open decisions).
+
+# ── core ──────────────────────────────────────────────────────────────────
+numpy>=1.24
+pillow>=10.0
+pyyaml>=6.0
+
+# ── camera capture ────────────────────────────────────────────────────────
+# Imported lazily in input/camera.py — app boots without it (DEGRADED mode).
+opencv-python>=4.8
+
+# ── on-device inference ───────────────────────────────────────────────────
+# Standard CPU runtime (always available as fallback — SRS §10).
+onnxruntime>=1.17
+
+# For QNN / Snapdragon NPU execution on the actual target device, replace
+# onnxruntime above with the Qualcomm-provided package, e.g.:
+#   onnxruntime-qnn  (exact package name TBC from Qualcomm AI Hub docs)
+# Do NOT install both simultaneously.
+#
+# Also install the onnx package if you want to run the optional
+# model-construction tests in tests/unit/test_detector.py:
+# onnx>=1.15
+
+# ── local vector store / document retrieval (MVP-4 — placeholder) ─────────
+# faiss-cpu
+# sentence-transformers
+
+# ── PDF ingestion (MVP-4) ──────────────────────────────────────────────────
+pypdf>=4.0
+
+# ── UI framework (MVP-6 — TBD) ────────────────────────────────────────────
+# fastapi
+# uvicorn
+
+# ── testing ───────────────────────────────────────────────────────────────
+pytest>=7.4

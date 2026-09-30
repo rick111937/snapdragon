@@ -1,0 +1,22 @@
+# MIRAGE-X application configuration (starter template)
+# Do NOT put API keys or secrets in this file – see SRS S13 (Security & Privacy).
+
+app:
+  name: MIRAGE-X
+  offline_first: true        # NFR-02: core inference must not require internet
+
+camera:
+  enabled: true
+  default_resolution: [1280, 720]
+
+audio:
+  enabled: false             # optional per FR-07; enable once an acoustic model is chosen
+
+execution:
+  # Preferred order of execution providers to attempt, in priority order.
+  # The implementation must report which one is ACTUALLY used – never assume
+  # NPU execution without runtime/device confirmation (SRS S10).
+  providers: [qnn, cpu]
+
+risk_levels: [LOW, MEDIUM, HIGH, CRITICAL]
+equipment_states: [NORMAL, WARNING, ANOMALOUS, UNKNOWN]
